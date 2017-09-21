@@ -5,6 +5,7 @@ sudo: false
 
 install:
   - go get -u github.com/golang/lint/golint
+  - go get -u github.com/golang/dep/...
   - dep ensure
 
 jobs:
