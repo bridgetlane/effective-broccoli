@@ -71,11 +71,3 @@ elif [ ${branch_version_split[0]} -lt ${master_version_split[0]} ];then
   echo -e "CHANGELOG.md version must be incremented. master version: $master_version_num, $BRANCH_NAME version: $version_num"
   exit 1
 fi
-
-# check for a ticket number in the commit log
-echo "---> Checking for the presence of a ticket number in the commit message"
-commit_mesg=`git log master.. --oneline --no-merges | grep -Eo '[A-Z]+-[0-9]+' | head -n 1`
-if [[ -z "${commit_mesg}"  ]]; then
-    echo -e "The commit message is missing a ticket number."
-    exit 1
-fi
