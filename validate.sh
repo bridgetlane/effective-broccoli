@@ -1,3 +1,5 @@
+#/usr/bin/env bash
+
 BRANCH_NAME=$1
 
 if [ "$BRANCH_NAME" == "" ]; then
