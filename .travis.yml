@@ -1,0 +1,13 @@
+language: go
+go: 1.9
+
+sudo: false
+
+script:
+  - golint -set_exit_status
+  - gofmt -l .
+  - go vet .
+  - sh validate.sh
+
+notifications:
+  email: false
