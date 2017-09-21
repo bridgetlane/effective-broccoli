@@ -10,6 +10,7 @@ script:
   - golint -set_exit_status
   - gofmt -l .
   - go vet .
+  - ./validate.sh
 
 notifications:
   email: false

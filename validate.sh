@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/bin/bash
 
 BRANCH_NAME=$1
 
