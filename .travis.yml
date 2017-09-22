@@ -25,10 +25,15 @@ jobs:
 
     - stage: unit test
       script:
+        - go test $(glide novendor)
+
+    - stage: build binary
+      script:
         - CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s" -a -installsuffix cgo -o effective-broccoli -v
 
     - stage: codecov
       script:
+        - cat codecov.yml | curl --data-binary @- https://codecov.io/validate
         - go test -race -coverprofile=coverage.txt -covermode=atomic
       after_success:
         - bash <(curl -s https://codecov.io/bash)
