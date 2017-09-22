@@ -10,13 +10,16 @@ install:
 
 jobs:
   include:
+
     - stage: lint
       script:
         - golint -set_exit_status
         - gofmt -l .
         - go vet .
-    - stage: changelog validation
-      script: ./validate.sh
+
+    # - stage: changelog validation
+    #   script: ./validate.sh
+
     - stage: unit test
       script:
         - CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s" -a -installsuffix cgo -o effective-broccoli -v
