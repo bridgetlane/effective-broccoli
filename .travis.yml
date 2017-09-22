@@ -3,6 +3,9 @@ go: 1.9
 
 sudo: false
 
+before_install:
+  - go get -t -v ./...
+
 install:
   - go get -u github.com/golang/lint/golint
   - go get -u github.com/golang/dep/...
@@ -23,6 +26,12 @@ jobs:
     - stage: unit test
       script:
         - CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s" -a -installsuffix cgo -o effective-broccoli -v
+
+    - stage: codecov
+      script:
+        - go test -race -coverprofile=coverage.txt -covermode=atomic
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)
 
 notifications:
   email: false
