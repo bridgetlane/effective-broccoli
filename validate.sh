@@ -5,17 +5,6 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   exit 0
 fi
 
-BRANCH_NAME=${TRAVIS_PULL_REQUEST_BRANCH}
-
-echo -e "---> PR branch is ${TRAVIS_PULL_REQUEST_BRANCH}"
-echo -e "---> PR is ${TRAVIS_PULL_REQUEST}"
-echo -e "---> running on branch $BRANCH_NAME"
-
-if [ "$BRANCH_NAME" == "" ]; then
-  echo -e "no branch argument provided. exiting"
-  exit 1
-fi
-
 # verify CHANGELOG.md exists
 echo "---> Checking for CHANGELOG.md"
 if [[ ! -f "CHANGELOG.md"  ]]
@@ -24,14 +13,10 @@ then
     exit 1
 fi
 
-git branch -av
 
 # verify CHANGELOG.md has a version that has been updated
 echo "---> Checking for update to version in CHANGELOG.md"
-#git checkout master || { echo 'FAIL: error checking out the master branch' ; exit 1; }
-#git checkout $BRANCH_NAME || { echo 'FAIL: error checking back out the current branch ' ; exit 1; }
 version_line=`git diff master..${TRAVIS_PULL_REQUEST_SHA} CHANGELOG.md | grep '^+# '`
-echo $version_line
 
 if [[ -z "${version_line}"  ]]; then
     echo -e "CHANGELOG.md must have an updated version number."
