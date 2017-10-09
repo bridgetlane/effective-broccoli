@@ -4,9 +4,9 @@ effective-broccoli CHANGELOG
 
 This file is used to list changes made in each version of effective-broccoli.
 
-# 0.0.2
+# 0.0.3
 
-Ryan Grothouse - test
+Ryan Grothouse - working validate.sh
 
 # 0.0.2
 
