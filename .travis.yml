@@ -20,8 +20,8 @@ jobs:
         - gofmt -l .
         - go vet .
 
-    # - stage: changelog validation
-    #   script: ./validate.sh
+    - stage: changelog validation
+      script: ./validate.sh
 
     - stage: unit test
       script:
