@@ -5,10 +5,6 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   exit 0
 fi
 
-ls
-cat CHANGELOG.md
-git remote -av
-git branch -av
 BRANCH_NAME=${TRAVIS_PULL_REQUEST_BRANCH}
 
 echo -e "---> PR branch is ${TRAVIS_PULL_REQUEST_BRANCH}"
@@ -29,17 +25,12 @@ then
 fi
 
 
-# if this is master, fail the job. this check should not have been called
-if [ "$BRANCH_NAME" == "master" ]; then
-  echo -e "Branch is master. Should not be checking this."
-  exit 1
-fi
-
 # verify CHANGELOG.md has a version that has been updated
 echo "---> Checking for update to version in CHANGELOG.md"
-git checkout master || { echo 'FAIL: error checking out the master branch' ; exit 1; }
-git checkout $BRANCH_NAME || { echo 'FAIL: error checking back out the current branch ' ; exit 1; }
-version_line=`git diff master..$BRANCH_NAME CHANGELOG.md | grep '^+# '`
+#git checkout master || { echo 'FAIL: error checking out the master branch' ; exit 1; }
+#git checkout $BRANCH_NAME || { echo 'FAIL: error checking back out the current branch ' ; exit 1; }
+version_line=`git diff master..refs/pull/${TRAVIS_PULL_REQUEST}/merge CHANGELOG.md | grep '^+# '`
+echo version_line
 
 if [[ -z "${version_line}"  ]]; then
     echo -e "CHANGELOG.md must have an updated version number."
