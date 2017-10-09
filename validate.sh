@@ -5,6 +5,8 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   exit 0
 fi
 
+git remote -av
+git branch -av
 BRANCH_NAME=${TRAVIS_PULL_REQUEST_BRANCH}
 
 echo -e "---> PR branch is ${TRAVIS_PULL_REQUEST_BRANCH}"
