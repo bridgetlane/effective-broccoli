@@ -7,12 +7,13 @@ else
 fi
 
 
+echo -e "---> running on branch $BRANCH_NAME"
+
 if [ "$BRANCH_NAME" == "" ]; then
   echo -e "no branch argument provided. exiting"
   exit 1
 fi
 
-echo -e "---> running on branch $BRANCH_NAME"
 # verify CHANGELOG.md exists
 echo "---> Checking for CHANGELOG.md"
 if [[ ! -f "CHANGELOG.md"  ]]
