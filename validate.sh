@@ -30,7 +30,7 @@ echo "---> Checking for update to version in CHANGELOG.md"
 #git checkout master || { echo 'FAIL: error checking out the master branch' ; exit 1; }
 #git checkout $BRANCH_NAME || { echo 'FAIL: error checking back out the current branch ' ; exit 1; }
 version_line=`git diff master..refs/pull/${TRAVIS_PULL_REQUEST}/merge CHANGELOG.md | grep '^+# '`
-echo version_line
+echo $version_line
 
 if [[ -z "${version_line}"  ]]; then
     echo -e "CHANGELOG.md must have an updated version number."
