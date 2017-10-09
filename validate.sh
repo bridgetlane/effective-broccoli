@@ -6,7 +6,8 @@ else
   BRANCH_NAME=${TRAVIS_PULL_REQUEST_BRANCH}
 fi
 
-
+echo -e "---> PR branch is ${TRAVIS_PULL_REQUEST_BRANCH}"
+echo -e "---> PR is ${TRAVIS_PULL_REQUEST}"
 echo -e "---> running on branch $BRANCH_NAME"
 
 if [ "$BRANCH_NAME" == "" ]; then
