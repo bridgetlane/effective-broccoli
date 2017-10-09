@@ -1,6 +1,11 @@
 #/usr/bin/env bash
 
-BRANCH_NAME=${TRAVIS_BRANCH}
+if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+  BRANCH_NAME=${TRAVIS_BRANCH}
+else
+  BRANCH_NAME=${TRAVIS_PULL_REQUEST_BRANCH}
+fi
+
 
 if [ "$BRANCH_NAME" == "" ]; then
   echo -e "no branch argument provided. exiting"
