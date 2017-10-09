@@ -5,6 +5,8 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   exit 0
 fi
 
+ls
+cat CHANGELOG.md
 git remote -av
 git branch -av
 BRANCH_NAME=${TRAVIS_PULL_REQUEST_BRANCH}
