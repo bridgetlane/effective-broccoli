@@ -1,6 +1,6 @@
 #/usr/bin/env bash
 
-BRANCH_NAME=$1
+BRANCH_NAME=${TRAVIS_BRANCH}
 
 if [ "$BRANCH_NAME" == "" ]; then
   echo -e "no branch argument provided. exiting"
