@@ -1,10 +1,11 @@
 #/usr/bin/env bash
 
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-  BRANCH_NAME=${TRAVIS_BRANCH}
-else
-  BRANCH_NAME=${TRAVIS_PULL_REQUEST_BRANCH}
+  echo -e "---> only validate changelog on PRs"
+  exit 0
 fi
+
+BRANCH_NAME=${TRAVIS_PULL_REQUEST_BRANCH}
 
 echo -e "---> PR branch is ${TRAVIS_PULL_REQUEST_BRANCH}"
 echo -e "---> PR is ${TRAVIS_PULL_REQUEST}"
