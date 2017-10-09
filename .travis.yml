@@ -14,14 +14,14 @@ install:
 jobs:
   include:
 
+    - stage: changelog validation
+      script: ./validate.sh
+
     - stage: lint
       script:
         - golint -set_exit_status
         - gofmt -l .
         - go vet .
-
-    # - stage: changelog validation
-    #   script: ./validate.sh
 
     - stage: unit test
       script:
