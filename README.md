@@ -6,6 +6,5 @@
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/bridgetlane/effective-broccoli)](https://goreportcard.com/report/github.com/bridgetlane/effective-broccoli)
 
-[![Build Status](https://paas-api-jenkins.gannettdigital.com/job/GannettDigital/go-newrelic-plugin/master/badge/icon)](https://paas-api-jenkins.gannettdigital.com/job/GannettDigital/go-newrelic-plugin/master)
 
 Travis test repo
